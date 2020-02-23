@@ -1,0 +1,14 @@
+800000
+2
+GregoTaxiPro
+55000
+0
+0
+1
+Auto: BMW 320d
+DelphineTaxiFR
+36500
+0
+0
+1
+Auto: Audi A6 50 TDI tiptronic

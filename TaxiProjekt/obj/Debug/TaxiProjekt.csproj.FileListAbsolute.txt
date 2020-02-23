@@ -1,0 +1,15 @@
+/Users/marcelo/Projects/Visual Studio/TaxiProjekt/TaxiProjekt/bin/Debug/TaxiProjekt.exe
+/Users/marcelo/Projects/Visual Studio/TaxiProjekt/TaxiProjekt/bin/Debug/TaxiProjekt.pdb
+/Users/marcelo/Projects/Visual Studio/TaxiProjekt/TaxiProjekt/obj/Debug/TaxiProjekt.csprojAssemblyReference.cache
+/Users/marcelo/Projects/Visual Studio/TaxiProjekt/TaxiProjekt/obj/Debug/TaxiProjekt.exe
+/Users/marcelo/Projects/Visual Studio/TaxiProjekt/TaxiProjekt/obj/Debug/TaxiProjekt.pdb
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/bin/Debug/TaxiProjekt.exe
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/bin/Debug/TaxiProjekt.pdb
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.csprojAssemblyReference.cache
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.exe
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.pdb
+/Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/bin/Debug/TaxiProjekt.exe
+/Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/bin/Debug/TaxiProjekt.pdb
+/Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.csprojAssemblyReference.cache
+/Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.exe
+/Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.pdb
