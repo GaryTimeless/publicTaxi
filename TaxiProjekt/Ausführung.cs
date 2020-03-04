@@ -5,9 +5,9 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TaxiWorld
+namespace TaxiProjekt
 {
-    internal class Program
+    public class MainClass
     {
         public static void Intro()
         {
@@ -22,7 +22,7 @@ namespace TaxiWorld
 /_/ /_/  |_/_/|_/___/     |__/|__/\____/_/ |_/_____/_____/  
                                                             
 ";
-            foreach (var a in ausgabe)
+            foreach(var a in ausgabe)
             {
                 Console.Write(a);
                 Thread.Sleep(5);
@@ -87,18 +87,18 @@ Waehlen Sie eine Option aus:
             StringBuilder zahlen = new StringBuilder();
             List<char> zahlen2 = new List<char>();
             int komma = 0;
-            foreach (var a in zahl.ToString())
+            foreach(var a in zahl.ToString())
             {
                 zahlen.Append((char)a);
                 zahlen2.Add((char)a);
             }
 
-            if (zahlen2.Contains((char)','))
+            if(zahlen2.Contains((char)','))
             {
                 komma = zahlen2.Count - zahlen2.IndexOf(',');
             }
 
-            for (int i = zahlen.Length - 3 - komma; i > 0; i -= 3)
+            for(int i = zahlen.Length-3-komma; i > 0; i-=3)
             {
                 zahlen.Insert(i, (char)'.');
             }
@@ -171,8 +171,7 @@ Waehlen Sie eine Option aus:
             Regex menüMöglichkeiten = new Regex("^[1-9]$");
             string ersterSchritt = Console.ReadLine();
 
-            //todo 10 muss noch in den Regex eingebunden werden/ in der Schleife überprüfen
-            if (menüMöglichkeiten.IsMatch(ersterSchritt.ToString()))
+            if (menüMöglichkeiten.IsMatch(ersterSchritt.ToString()) || Convert.ToInt32(ersterSchritt) == 10)
             {
                 switch (Convert.ToInt32(ersterSchritt))
                 {
@@ -236,7 +235,7 @@ Waehlen Sie eine Option aus:
 
                             while (true)
                             {
-                                if (zahl.IsMatch(unternehmen) && Convert.ToInt32(unternehmen) <= Benutzer.player.TaxiUnternehmen.Count)
+                                if(zahl.IsMatch(unternehmen) && Convert.ToInt32(unternehmen) <= Benutzer.player.TaxiUnternehmen.Count)
                                 {
                                     Thread.Sleep(100);
                                     Console.Clear();
@@ -267,9 +266,9 @@ Waehlen Sie eine Option aus:
                                 //hack Gebäudekosten
                                 Console.WriteLine();
                                 string ausgabe = "Taxi faehrt...";
-                                for (int j = 0; j < 3; j++)
+                                for(int j = 0; j < 3; j++)
                                 {
-                                    foreach (var a in ausgabe)
+                                    foreach(var a in ausgabe)
                                     {
                                         Console.Write(a);
                                         Thread.Sleep(50);
@@ -292,14 +291,14 @@ Waehlen Sie eine Option aus:
 
                         Regex möglichkeiten = new Regex("^[1-7]$");
                         int n = 0;
-                        foreach (var a in BWL.alleBla)
+                        foreach(var a in BWL.alleBla)
                         {
                             n++;
                             Console.WriteLine(n + ". " + a);
                         }
                         Console.Write("\n\nBitte waehlen Sie eine Funktion:\t");
                         string funktion = Console.ReadLine();
-                        while (!möglichkeiten.IsMatch(funktion))
+                        while(!möglichkeiten.IsMatch(funktion))
                         {
                             Console.Write("\nUngueltige Eingabe! Bitte erneut waehlen:\t");
                             funktion = Console.ReadLine();
@@ -316,7 +315,7 @@ Waehlen Sie eine Option aus:
                             return;
                         }
 
-                        switch (Convert.ToInt32(funktion))
+                        switch(Convert.ToInt32(funktion))
                         {
                             //todo fehlerbehandlungen bei allen
                             case 1:
@@ -333,7 +332,7 @@ Waehlen Sie eine Option aus:
                                 int laufzeit = Convert.ToInt32(Console.ReadLine());
 
                                 double rbf = BWL.RBF(zinssatz, laufzeit);
-                                Console.WriteLine("\n\nRBF:\t\t" + Program.ZahlenAnzeigen(rbf));
+                                Console.WriteLine("\n\nRBF:\t\t" + MainClass.ZahlenAnzeigen(rbf));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -356,7 +355,7 @@ Waehlen Sie eine Option aus:
                                 laufzeit = Convert.ToInt32(Console.ReadLine());
 
                                 double kw = BWL.Kapitalwert(investition, zinssatz, c, laufzeit);
-                                Console.WriteLine("\n\nKapitalwert:\t\t" + Program.ZahlenAnzeigen(kw));
+                                Console.WriteLine("\n\nKapitalwert:\t\t" + MainClass.ZahlenAnzeigen(kw));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -377,7 +376,7 @@ Waehlen Sie eine Option aus:
                                 laufzeit = Convert.ToInt32(Console.ReadLine());
 
                                 double sb = BWL.Sparbetrag(c, zinssatz, laufzeit);
-                                Console.WriteLine("\n\nKapitalwert:\t\t" + Program.ZahlenAnzeigen(sb));
+                                Console.WriteLine("\n\nKapitalwert:\t\t" + MainClass.ZahlenAnzeigen(sb));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -397,8 +396,8 @@ Waehlen Sie eine Option aus:
                                 Console.Write("Laufzeit:\t\t");
                                 laufzeit = Convert.ToInt32(Console.ReadLine());
 
-                                double js = BWL.JaehrlicheSparsumme(c, zinssatz, laufzeit);
-                                Console.WriteLine("\n\nKapitalwert:\t\t" + Program.ZahlenAnzeigen(js));
+                                double js = BWL.Sparbetrag(c, zinssatz, laufzeit);
+                                Console.WriteLine("\n\nKapitalwert:\t\t" + MainClass.ZahlenAnzeigen(js));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -417,7 +416,7 @@ Waehlen Sie eine Option aus:
                                 double ausgabe = Convert.ToDouble(Console.ReadLine());
 
                                 double kwf1 = BWL.KWF1(c, ausgabe);
-                                Console.WriteLine("\n\nKWF1:\t\t" + Program.ZahlenAnzeigen(kwf1));
+                                Console.WriteLine("\n\nKWF1:\t\t" + MainClass.ZahlenAnzeigen(kwf1));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -436,7 +435,7 @@ Waehlen Sie eine Option aus:
                                 laufzeit = Convert.ToInt32(Console.ReadLine());
 
                                 double kwf2 = BWL.KWF2(zinssatz, laufzeit);
-                                Console.WriteLine("\n\nKWF2:\t\t" + Program.ZahlenAnzeigen(kwf2));
+                                Console.WriteLine("\n\nKWF2:\t\t" + MainClass.ZahlenAnzeigen(kwf2));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -457,7 +456,7 @@ Waehlen Sie eine Option aus:
                                 zinssatz = Convert.ToDouble(Console.ReadLine());
 
                                 double ad = BWL.Amortisationsdauer(c, ausgabe, zinssatz);
-                                Console.WriteLine("\n\nAmortisationsdauer:\t\t" + Program.ZahlenAnzeigen(ad));
+                                Console.WriteLine("\n\nAmortisationsdauer:\t\t" + MainClass.ZahlenAnzeigen(ad));
                                 Console.ReadKey();
                                 LoadScreen();
                                 break;
@@ -479,15 +478,15 @@ Waehlen Sie eine Option aus:
                 Thread.Sleep(1000);
                 Hauptmenü();
             }
-
+            
         }
-
-
+        
+        
         public static void Main()
         {
             Hersteller.FuhrparkGenerieren();
             Intro();
-
+           
             //hack SuL.ALLHASHINT(); Just for the Hashnumbers
             while (true)
             {

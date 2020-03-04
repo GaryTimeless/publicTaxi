@@ -40,6 +40,7 @@
     <Compile Include="Benutzer.cs" />
     <Compile Include="Intervall.cs" />
     <Compile Include="Speichern &amp; Laden.cs" />
+    <Compile Include="BWL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

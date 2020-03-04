@@ -1,11 +1,12 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TaxiWorld
+
+namespace TaxiProjekt
 {
     public class Bank
     {
@@ -18,7 +19,7 @@ namespace TaxiWorld
 
         }
 
-
+        
         public static void BesuchBank()
         {
             int AnzahlUnternehmen = Benutzer.player.TaxiUnternehmen.Count;
@@ -28,7 +29,7 @@ namespace TaxiWorld
                 Console.WriteLine("Da Sie noch kein Unternehmen haben, kann ich Ihnen noch kein Kredit für ein Taxi geben.");
                 Console.ResetColor();
                 Console.ReadKey();
-                Program.LoadScreen();
+                MainClass.LoadScreen();
             }
             else
             {
@@ -49,7 +50,7 @@ Womit kann ich Ihnen behilflich sein?
 
                                             (1) Kredit fuer den Kauf eines Taxis
                                             (2) Kreit fuer die Gruendung eines Unternehmens");
-                Console.Write("\n" + "Bitte waehlen: ");
+                Console.Write("\n"+"Bitte waehlen: ");
 
 
                 //hack Not sure if this do what i want it to do :D
@@ -58,7 +59,7 @@ Womit kann ich Ihnen behilflich sein?
                 {
                     try
                     {
-
+                        
                         Kreditauswahl = Convert.ToInt32(Console.ReadLine());
 
                     }
@@ -97,13 +98,13 @@ Womit kann ich Ihnen behilflich sein?
             Console.ReadKey();
             Console.WriteLine("Herr Duebon:\tZunaechst interessiert mich, was sie sich vorgestellt haben, wie hoch der Kredit sein soll.");
             Console.Write("\nKreditsumme:\t");
-
+             
             int Kredithöhe = -1;
             while (!zahlen.IsMatch(Kredithöhe.ToString()))
             {
                 try
                 {
-
+                    
                     Kredithöhe = Convert.ToInt32(Console.ReadLine());
 
                 }
@@ -123,7 +124,7 @@ Womit kann ich Ihnen behilflich sein?
 
             Console.ReadKey();
             Console.WriteLine("Herr Duebon:\tMit Welchem Unternehmen moechten sie einen Kredit aufnehmen?");
-
+            
             Benutzer.player.zeigeUnternehmen(Benutzer.player);
             Console.Write("\nUnternehmen Nr.:\t");
             int UnternehmensKapital = Convert.ToInt32(Console.ReadLine());
@@ -165,7 +166,7 @@ Womit kann ich Ihnen behilflich sein?
                 Console.Write(" Fahzeuge besitzen\n");
             }
             Console.ReadKey();
-
+            
 
             bool montlEinkommen = false;
             if (AnzahlTaxis > 0)
@@ -188,7 +189,7 @@ Womit kann ich Ihnen behilflich sein?
                 try
                 {
 
-                    Anzahlung = Convert.ToInt32(Console.ReadLine());
+                     Anzahlung = Convert.ToInt32(Console.ReadLine());
 
                 }
                 catch
@@ -198,7 +199,7 @@ Womit kann ich Ihnen behilflich sein?
                     Console.ResetColor();
                 }
             }
-            Console.WriteLine("\n" + "Herr Duebon:\tBestens. Nun haben wir alle relevanten Daten. Ich vergleiche diese nun mit unserer Datenbank um ihren Zins auszurechnen...");
+            Console.WriteLine("\n"+"Herr Duebon:\tBestens. Nun haben wir alle relevanten Daten. Ich vergleiche diese nun mit unserer Datenbank um ihren Zins auszurechnen...");
             Console.ReadKey();
 
             KredizZins(Kredithöhe, Benutzer.player.TaxiUnternehmen.Count, AnzahlTaxis, Anzahlung, montlEinkommen, Verbindlichkeiten, UnternehmensKapital - 1);
@@ -239,7 +240,7 @@ Womit kann ich Ihnen behilflich sein?
             else { HoherZins = true; }
 
             Console.WriteLine("Ihre Daten werden berechnet...");
-            Program.LoadScreen();
+            MainClass.LoadScreen();
 
             if (HoherZins == false)
             {
@@ -248,11 +249,11 @@ Womit kann ich Ihnen behilflich sein?
             }
 
             Console.WriteLine("Ihre Kreditwuerdigkeit wurde bestaetigt. Sie erhalten ihre Wunschsumme zu folgenden Konditionen:");
-            Console.WriteLine("NettoKreditbetrag:\t" + (kredithöhe - eigenkapital) + "\n");
+            Console.WriteLine("NettoKreditbetrag:\t" + (kredithöhe-eigenkapital) + "\n");
             Console.WriteLine("Zins:\t\t\t" + Zins + "\n");
 
 
-            Console.WriteLine("Kreditsumme:\t\t" + (kredithöhe - eigenkapital) * Math.Pow(1 + Zins, 3) + "\n");
+            Console.WriteLine("Kreditsumme:\t\t" + (kredithöhe-eigenkapital)*Math.Pow(1+Zins,3) + "\n");
             Console.WriteLine("Laufzeit:\t\t36 Monate \n");
             Console.WriteLine("montl. Aufwand:\t\t" + (kredithöhe - eigenkapital) * Math.Pow(1 + Zins, 3) / 36 + "\n");
 
@@ -265,7 +266,7 @@ Herr Duebon:    Sind Sie damit einverstanden?
             if (Annahme == 1)
             {
                 Console.WriteLine("\nHerr Duebon:\tAusgezeichnet. Ich bereite alles vor, in wenigen Sekunden verfuegen Sie ueber das Geld");
-                Program.LoadScreen();
+                MainClass.LoadScreen();
                 Benutzer.player.TaxiUnternehmen[TaxiUnternehmenAuswahl].Kapital += kredithöhe;
                 Benutzer.player.TaxiUnternehmen[TaxiUnternehmenAuswahl].Verbindlichkeiten += (kredithöhe - eigenkapital) * Math.Pow(1 + Zins, 3);
                 Benutzer.player.TaxiUnternehmen[TaxiUnternehmenAuswahl].montlKredit += (kredithöhe - eigenkapital) * Math.Pow(1 + Zins, 3) / 36;
@@ -275,7 +276,7 @@ Herr Duebon:    Sind Sie damit einverstanden?
             else
             {
                 Console.WriteLine("\nHerr Duebon:\tWie sie moechten. Beehren Sie uns bald wieder. Bid bald.");
-                Program.LoadScreen();
+                MainClass.LoadScreen();
             }
         }
 

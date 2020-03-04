@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{EBE9722E-D1D1-4122-A4EA-01B3138630EF}|Default">
+  <MonoDevelop.Ide.ItemProperties.TaxiWorld PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Ausführung.cs">
+    <Files>
+      <File FileName="Ausführung.cs" Line="40" Column="1" />
+      <File FileName="Ausführung.cs" Line="40" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TaxiWorld" expanded="True">
+            <Node name="TaxiWorld" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

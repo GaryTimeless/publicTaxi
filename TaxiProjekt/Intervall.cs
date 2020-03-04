@@ -1,20 +1,20 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TaxiWorld
+
+namespace TaxiProjekt
 {
+    
     public class Intervall
     {
         static Regex EinsbisDrei = new Regex("^[123]$");
         static Random rand = new Random();
-        //hack Choose option intervall length -> 1 Monat, 3 Monate, 6 Monate
-        //hack Check anzahl Taxis -> choose one to calculate / decide activity
-        //hack GO: jedes Taxi hat den gleichen €/km Wert 
-        //
+         
+        
         //hack evtl entscheiden verschiedene Werte über Anzahl Taxifahrt:
         //                          können Taxis Leveln?
         //hack welche kosten fallen an?
@@ -35,7 +35,7 @@ namespace TaxiWorld
                 try
                 {
                     AnzahlMonate = Convert.ToInt32(Console.ReadLine());
-                    if (AnzahlMonate == 2 || AnzahlMonate == 3)
+                    if(AnzahlMonate == 2 || AnzahlMonate == 3)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("\nLeider noch nicht verfuegbar :(");
@@ -119,7 +119,7 @@ namespace TaxiWorld
                     double gesamtUmsatzProMonat = (UmsatzPZ1 + UmsatzPZ2 + UmsatzPZ3);
 
 
-                    //hack Ausgabe der Anzahl Fahrten in versch. Preiszonen
+                    //hack Ausgabe der Anzahl Fahrten in versch. Preiszonen vorerst für codeZwecke
 
                     //Console.WriteLine("aktuelles Taxi: "+TaxiAuto.Modell);
                     //Console.WriteLine("Anzahl Fahrten PZ1 :"+FahrtenInPreisZone1.ToString());
@@ -149,8 +149,76 @@ namespace TaxiWorld
                     //                                                                                       -> UmsatzPZ3
                     //                                                                                       -> GesamtUmsatz
                     //                                                                                       -> gefahreneKM
+
+
+                    // hack Versuch einen Lifeticker zu basteln
+
+                    //Idee: Liveticker geht 20 sec. und zeigt teilweise Fahrten an. Alternativ müssten es 80 sein... denke das wäre zu viel und sinnlos
+                    //      es geht vorerst ja nur um Unterhaltung (emotion)
+                    // dennoch sollen die angegebenen Daten echt sein.
+                    // folgendes TExt layout
+
+
+
+                    //TaxiUnternehmen: NAME
+                    //Taxi: Modell
+                    //Taxifahrer? - wenn Personal kommt
+                    //Fahrt innerhalb PZ(X)
+                    // Strecke: (XX) KM
+                    // Einnahmen: (XX.xx) €
+
+
+                    // oder :
+
+                    // Taxifahrer(x) fährt mit seiem Taxi(x) ein/e Geschlecht(X,Y,Z) (XX) KM und rechnet (XX,xx)€ ab.
+                    
+                    
+
+
+
                 }
             }
         }
+        //public static string RandomGeschlecht()
+        //{
+        //    int i = rand.Next(1, 2);
+        //    string geschlecht = "";
+        //    switch (i)
+        //    {
+        //        case 1:
+        //            geschlecht = "einen Mann";
+        //            break;
+        //        case 2:
+        //            geschlecht = "eine Frau";
+        //            break;
+        //    }
+        //    return geschlecht;
+        //}
+        //public static void AusgabeLiveticker(int AnzahlFahrten, Taxi aktuellesTaxi, int einzelneFahrtKm, int )
+        //{
+
+        //    int ausgabeLiveticker = rand.Next(1, 3);
+
+
+
+        //    switch (ausgabeLiveticker)
+        //    {
+        //        case 1:
+        //            int tmp1 = FahrtenInPreisZone1;
+        //            if (tmp1 > 0)
+        //            {
+        //                Console.WriteLine("James fährt mit seinem" + TaxiAuto + RandomGeschlecht() + KM und rechnet(XX, xx)€ ab.");
+
+        //                tmp1 -= 1;
+        //            }
+
+
+        //            Console.WriteLine("hello");
+
+        //            break;
+
+
+        //    }
+        //}
     }
 }

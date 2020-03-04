@@ -1,11 +1,12 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TaxiWorld
+
+namespace TaxiProjekt
 {
     public class Taxi
     {
@@ -29,7 +30,7 @@ namespace TaxiWorld
             this.Sitzplaetze = sitzplaetze;
             this.Bauart = bauart;
         }
-
+        
 
         public override string ToString()
         {
@@ -39,7 +40,7 @@ namespace TaxiWorld
 
         public static string kompletteAusagbe(Taxi auto)
         {
-            return "\n\nAuto:\t\t" + auto.Händler + " " + auto.Modell + "\nAntrieb:\t" + auto.Antrieb + "\nBauart:\t\t" + auto.Bauart + "\nSitzplaetze:\t" + auto.Sitzplaetze + "\nBaujahr:\t" + auto.Baujahr + "\nKilometerstand:\t" + auto.Kilometerstand + "\n\nPreis:\t" + Program.ZahlenAnzeigen(auto.Preis) + " Euro.";
+            return "\n\nAuto:\t\t" + auto.Händler + " " + auto.Modell + "\nAntrieb:\t" + auto.Antrieb + "\nBauart:\t\t" + auto.Bauart + "\nSitzplaetze:\t" + auto.Sitzplaetze + "\nBaujahr:\t" + auto.Baujahr + "\nKilometerstand:\t" + auto.Kilometerstand + "\n\nPreis:\t" + MainClass.ZahlenAnzeigen(auto.Preis) + " Euro.";
         }
 
 
@@ -69,24 +70,24 @@ namespace TaxiWorld
         public static Taxi MercedesBenz_GLE = new Taxi("GLE 450 4MATIC", "Mercedes Benz", 2020, 0, 72649.50, Antriebsart.MercedesBenz_450_4MATIC, 5, "SUV");
         public static Taxi MercedesBenz_S = new Taxi("S 450 4MATIC", "Mercedes Benz", 2020, 0, 102857.65, Antriebsart.MercedesBenz_450_4MATIC, 4, "Limousine");
 
-
+        
         public static int TaxinamenAusgabe(int unternehmen, int hersteller)
-        {
+        {   
             //TODO Eingabe überprüfen
             string taxiAuswahl;
-            switch (hersteller)
+            switch(hersteller)
             {
                 case 0:
-                    for (int i = 0; i < Hersteller.Audi.Fuhrpark.Count; i++)
+                    for(int i = 0; i < Hersteller.Audi.Fuhrpark.Count; i++)
                     {
                         Console.WriteLine(i + 1 + ". " + Taxi.TaxiNameAusgabe(Hersteller.Audi.Fuhrpark[i]));
                     }
                     Console.Write("\n\nBitte waehlen Sie ein Modell aus:\t");
                     taxiAuswahl = Console.ReadLine();
                     Regex zahl = new Regex("^[0-9]+$");
-                    while (true)
+                    while(true)
                     {
-                        if (zahl.IsMatch(taxiAuswahl) && Convert.ToInt32(taxiAuswahl) > 0 && Convert.ToInt32(taxiAuswahl) <= Hersteller.Audi.Fuhrpark.Count)
+                        if(zahl.IsMatch(taxiAuswahl) && Convert.ToInt32(taxiAuswahl) > 0 && Convert.ToInt32(taxiAuswahl) <= Hersteller.Audi.Fuhrpark.Count)
                         {
                             return Convert.ToInt32(taxiAuswahl) - 1;
                         }
@@ -174,10 +175,10 @@ namespace TaxiWorld
 
         public static void TaxiKauf(int unternehmen, int hersteller, int taxi) // TODO müssten hier in die Else nicht die aussgae reinkommen -> zu wenig Geld?
         {
-            switch (hersteller)
+            switch(hersteller)
             {
                 case 0:
-                    if (Benutzer.player.TaxiUnternehmen[unternehmen].Kapital >= Hersteller.Audi.Fuhrpark[taxi].Preis)
+                    if(Benutzer.player.TaxiUnternehmen[unternehmen].Kapital >= Hersteller.Audi.Fuhrpark[taxi].Preis)
                     {
                         Benutzer.player.TaxiUnternehmen[unternehmen].Fuhrpark.Add(Hersteller.Audi.Fuhrpark[taxi]);
                         Console.ForegroundColor = ConsoleColor.DarkGreen;

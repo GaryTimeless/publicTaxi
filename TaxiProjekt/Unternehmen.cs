@@ -1,11 +1,12 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TaxiWorld
+
+namespace TaxiProjekt
 {
     public class Unternehmen
     {
@@ -28,16 +29,16 @@ namespace TaxiWorld
 
         public override string ToString()
         {
-            if (this.Fuhrpark.Count == 0)
+            if(this.Fuhrpark.Count == 0)
             {
-                return "Unternehmen:\t\t" + this.Name + "\nGruender:\t\t" + this.Gründer.Name + "\nVerbindlichkeiten:\t" + Program.ZahlenAnzeigen(this.Verbindlichkeiten) + "\nKapital:\t\t" + Program.ZahlenAnzeigen(this.Kapital) + " Euro\nFuhrpark:\t\tNoch keine Taxis gekauft";
+                return "Unternehmen:\t\t" + this.Name + "\nGruender:\t\t" + this.Gründer.Name + "\nVerbindlichkeiten:\t" + MainClass.ZahlenAnzeigen(this.Verbindlichkeiten) + "\nKapital:\t\t" + MainClass.ZahlenAnzeigen(this.Kapital) + " Euro\nFuhrpark:\t\tNoch keine Taxis gekauft";
             }
             string autos = "";
-            foreach (var a in this.Fuhrpark)
+            foreach(var a in this.Fuhrpark)
             {
                 autos += a.Händler + " " + a.Modell + "\t";
             }
-            return "Unternehmen:\t\t" + this.Name + "\nGruender:\t\t" + this.Gründer.Name + "\nVerbindlichkeiten:\t" + Program.ZahlenAnzeigen(this.Verbindlichkeiten) + "\nKapital:\t\t" + Program.ZahlenAnzeigen(this.Kapital) + " Euro\nFuhrpark:\t\t" + autos;
+            return "Unternehmen:\t\t" + this.Name + "\nGruender:\t\t" + this.Gründer.Name + "\nVerbindlichkeiten:\t" + MainClass.ZahlenAnzeigen(this.Verbindlichkeiten) + "\nKapital:\t\t" + MainClass.ZahlenAnzeigen(this.Kapital) + " Euro\nFuhrpark:\t\t" + autos;
         }
 
 
@@ -46,14 +47,14 @@ namespace TaxiWorld
             Console.Write("\nWie soll ihr Unternehmen heissen:\t");
             string companyName = Console.ReadLine();
             List<string> unternehmensNamen = new List<string>();
-            foreach (var a in gründer.TaxiUnternehmen)
+            foreach(var a in gründer.TaxiUnternehmen)
             {
                 unternehmensNamen.Add(a.Name);
             }
 
-            while (true)
+            while(true)
             {
-                if (companyName != "" && companyName != null && !unternehmensNamen.Contains(companyName))
+                if(companyName != "" && companyName != null && !unternehmensNamen.Contains(companyName))
                 {
                     Console.Write("\n\nWie viel Geld wollen Sie in das Unternehmen einlegen?\t");
                     string input = Console.ReadLine();
@@ -92,5 +93,15 @@ namespace TaxiWorld
                 companyName = Console.ReadLine();
             }
         }
+
+
+
+
+        
+        
+
     }
+
+
+
 }

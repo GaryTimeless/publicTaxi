@@ -70,14 +70,14 @@ namespace TaxiProjekt
             Console.Write("Bitte tippe deinen Namen ein:\t");
             string BenutzerName = Console.ReadLine();
             Benutzer.player = new Benutzer(BenutzerName);
-
+            int Exception = 0;
             try
             {
                 LadeSpielerDaten = new StreamReader(Benutzer.player.Name + ".txt");
 
                 Benutzer.player.Kapital = Convert.ToInt32(LadeSpielerDaten.ReadLine());
                 int AnzahlUnternehmen = Convert.ToInt32(LadeSpielerDaten.ReadLine());
-
+                Exception = 1;
                 for (int i = 0; i < AnzahlUnternehmen; ++i)
                 {
                     // müssen wir Mal genau durchdenken, ob dass so Sinn ergibt...
@@ -100,8 +100,16 @@ namespace TaxiProjekt
                 LadeSpielerDaten.Close();
             }
             catch
-            {
-                Console.WriteLine("Es ist ein fehler aufgetreten!");
+            {   if (Exception == 0)
+                {
+                    Console.WriteLine("Es ist ein fehler aufgetreten! \nDie Datei die sie suchen existiert nicht.\n\n DAS SPIEL WIRD BEENDET");
+                    Console.ReadKey();
+                    MainClass.LoadScreen();
+                    MainClass.EndGame();
+                }else if(Exception== 1)
+                Console.WriteLine("\nEs ist ein fehler aufgetreten!\n\nIhre Datei ist beschaedigt.\n\n\nDas Spiel wird beendet!");
+                MainClass.LoadScreen();
+                MainClass.EndGame();
             }
             finally
             {
@@ -112,9 +120,6 @@ namespace TaxiProjekt
             }
             //LadeSpielerDaten.Close(); // safetyfirst;
         }
-
-
-        
 
         // Import String, Hash Number, Set Taxi
         public static void ImportHashSetTaxi(string Taxi, int IndexTaxiUnternehmensListe, int IndexTaxiUnternehmensFuhrparkliste)
@@ -158,7 +163,6 @@ namespace TaxiProjekt
             // behindert uns hier der ToString wert?
             Benutzer.player.TaxiUnternehmen[IndexTaxiUnternehmensListe].Fuhrpark.Add(TaxiHASHTABELLE[HashtableNumber]);
         }
-
 
         // just for HashTable
         public static void ALLHASHINT()

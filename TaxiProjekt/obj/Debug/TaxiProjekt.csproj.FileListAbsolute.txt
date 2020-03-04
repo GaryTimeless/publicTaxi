@@ -13,3 +13,13 @@
 /Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.csprojAssemblyReference.cache
 /Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.exe
 /Users/marcelo/Projects/GitHub/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.pdb
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.csprojAssemblyReference.cache
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.exe
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiProjekt/TaxiMitGrego/TaxiProjekt/obj/Debug/TaxiProjekt.pdb
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiProjekt/TaxiMitGrego/TaxiProjekt/bin/Debug/TaxiProjekt.exe
+/Users/gregoryschenk/Documents/GitHub/TaxiProjekt/TaxiProjekt/TaxiMitGrego/TaxiProjekt/bin/Debug/TaxiProjekt.pdb
+/Users/gregoryschenk/Documents/GitHub/publicTaxi/TaxiProjekt/bin/Debug/TaxiProjekt.exe
+/Users/gregoryschenk/Documents/GitHub/publicTaxi/TaxiProjekt/bin/Debug/TaxiProjekt.pdb
+/Users/gregoryschenk/Documents/GitHub/publicTaxi/TaxiProjekt/obj/Debug/TaxiProjekt.csprojAssemblyReference.cache
+/Users/gregoryschenk/Documents/GitHub/publicTaxi/TaxiProjekt/obj/Debug/TaxiProjekt.exe
+/Users/gregoryschenk/Documents/GitHub/publicTaxi/TaxiProjekt/obj/Debug/TaxiProjekt.pdb
