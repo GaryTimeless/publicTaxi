@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-
-namespace TaxiProjekt
+namespace TaxiWorld
 {
     public class Benutzer
     {
@@ -15,7 +14,8 @@ namespace TaxiProjekt
         public string Name;
         public double Kapital;
         public List<Unternehmen> TaxiUnternehmen;
-        
+
+
         public Benutzer(string name)
         {
             this.Name = name;
@@ -23,25 +23,27 @@ namespace TaxiProjekt
             this.TaxiUnternehmen = new List<Unternehmen>();
         }
 
+
         public override string ToString()
         {
-            if(TaxiUnternehmen.Count == 0 || TaxiUnternehmen == null)
+            if (TaxiUnternehmen.Count == 0 || TaxiUnternehmen == null)
             {
-                return "\n\nBenutzerinformationen:\n\nName:\t\t" + this.Name + "\nKapital:\t" + MainClass.ZahlenAnzeigen(this.Kapital) + " Euro\nUnternehmen:\tSie haben noch keine Unternehmen";
+                return "\n\nBenutzerinformationen:\n\nName:\t\t" + this.Name + "\nKapital:\t" + Program.ZahlenAnzeigen(this.Kapital) + " Euro\nUnternehmen:\tSie haben noch keine Unternehmen";
             }
             int index = 0;
             string unternehmen = "";
-            foreach(var a in Benutzer.player.TaxiUnternehmen)
+            foreach (var a in Benutzer.player.TaxiUnternehmen)
             {
                 index++;
-                unternehmen += index + ". " +  a.Name + "\n\t\t";
+                unternehmen += index + ". " + a.Name + "\n\t\t";
             }
-            return "\n\nBenutzerinformationen:\n\nName:\t\t" + this.Name + "\nKapital:\t" + MainClass.ZahlenAnzeigen(this.Kapital) + " Euro\nUnternehmen:\t" + unternehmen;
+            return "\n\nBenutzerinformationen:\n\nName:\t\t" + this.Name + "\nKapital:\t" + Program.ZahlenAnzeigen(this.Kapital) + " Euro\nUnternehmen:\t" + unternehmen;
         }
+
 
         public void zeigeUnternehmen(Benutzer gründer)
         {
-            if(gründer.TaxiUnternehmen.Count == 0)
+            if (gründer.TaxiUnternehmen.Count == 0)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("\nNoch keine Unternehmen gegruendet!");
@@ -51,9 +53,10 @@ namespace TaxiProjekt
             Console.WriteLine();
             for (int i = 0; i < gründer.TaxiUnternehmen.Count; i++)
             {
-                Console.WriteLine(i+1 + ". " + gründer.TaxiUnternehmen[i].Name);
+                Console.WriteLine(i + 1 + ". " + gründer.TaxiUnternehmen[i].Name);
             }
         }
+
 
         public int einkaufUnternehmen()
         {
@@ -64,9 +67,9 @@ namespace TaxiProjekt
             string gewähltesUnternehmen = Console.ReadLine();
             Regex zahl = new Regex("^[1-9]+$");
 
-            while(true)
+            while (true)
             {
-                if(zahl.IsMatch(gewähltesUnternehmen) && Convert.ToInt32(gewähltesUnternehmen) > 0 && Convert.ToInt32(gewähltesUnternehmen) <= Benutzer.player.TaxiUnternehmen.Count)
+                if (zahl.IsMatch(gewähltesUnternehmen) && Convert.ToInt32(gewähltesUnternehmen) > 0 && Convert.ToInt32(gewähltesUnternehmen) <= Benutzer.player.TaxiUnternehmen.Count)
                 {
                     Console.Write("\nSie haben das Unternehmen ");
                     Console.ForegroundColor = ConsoleColor.DarkGreen;

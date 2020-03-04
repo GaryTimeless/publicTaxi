@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-
-namespace TaxiProjekt
+namespace TaxiWorld
 {
     public class Hersteller
     {
@@ -17,11 +16,12 @@ namespace TaxiProjekt
         public static Hersteller MercedesBenz = new Hersteller();
 
         public static List<string> HerstellerListe = new List<string> { "Audi", "BMW", "Mercedes Benz" };
-        
+
         public Hersteller()
         {
             this.Fuhrpark = new List<Taxi>();
         }
+
 
         public static void FuhrparkGenerieren()
         {
@@ -46,6 +46,7 @@ namespace TaxiProjekt
             MercedesBenz.Fuhrpark.Add(Taxi.MercedesBenz_S);
         }
 
+
         public static int HerstellerWahl()
         {
             Console.Write("\n\nBitte waehlen Sie einen Hersteller:\n\n");
@@ -57,9 +58,9 @@ namespace TaxiProjekt
             string auswahlUnternehmen = Console.ReadLine();
             Regex zahl = new Regex("^[0-9]+$");
 
-            while(true)
+            while (true)
             {
-                if(zahl.IsMatch(auswahlUnternehmen) && Convert.ToInt32(auswahlUnternehmen) > 0 && Convert.ToInt32(auswahlUnternehmen) <= HerstellerListe.Count)
+                if (zahl.IsMatch(auswahlUnternehmen) && Convert.ToInt32(auswahlUnternehmen) > 0 && Convert.ToInt32(auswahlUnternehmen) <= HerstellerListe.Count)
                 {
                     Console.Write("\n\nSie haben den Hersteller ");
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -70,7 +71,7 @@ namespace TaxiProjekt
                     Console.Clear();
                     return Convert.ToInt32(auswahlUnternehmen) - 1;
                 }
-                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.Write("Diesen Hersteller gibt es noch nicht!\nBitte waehlen Sie einen neuen:\t");
                 Console.ResetColor();
                 auswahlUnternehmen = Console.ReadLine();

@@ -5,9 +5,9 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace TaxiProjekt
+namespace TaxiWorld
 {
-    public class MainClass
+    internal class Program
     {
         public static void Intro()
         {
@@ -22,7 +22,7 @@ namespace TaxiProjekt
 /_/ /_/  |_/_/|_/___/     |__/|__/\____/_/ |_/_____/_____/  
                                                             
 ";
-            foreach(var a in ausgabe)
+            foreach (var a in ausgabe)
             {
                 Console.Write(a);
                 Thread.Sleep(5);
@@ -62,6 +62,7 @@ Waehlen Sie eine Option aus:
             }
         }
 
+
         public static void NewGame()
         {
             Console.Clear();
@@ -75,7 +76,7 @@ Waehlen Sie eine Option aus:
             }
             Benutzer.player = new Benutzer(benutzername);
             SuL.speicherDaten();
-            //Console.WriteLine("\n\nIhr Benutzer wurde erstellt!");
+            //todo Console.WriteLine("\n\nIhr Benutzer wurde erstellt!");
             Console.WriteLine(Benutzer.player);
             Console.ReadKey();
         }
@@ -86,18 +87,18 @@ Waehlen Sie eine Option aus:
             StringBuilder zahlen = new StringBuilder();
             List<char> zahlen2 = new List<char>();
             int komma = 0;
-            foreach(var a in zahl.ToString())
+            foreach (var a in zahl.ToString())
             {
                 zahlen.Append((char)a);
                 zahlen2.Add((char)a);
             }
 
-            if(zahlen2.Contains((char)','))
+            if (zahlen2.Contains((char)','))
             {
                 komma = zahlen2.Count - zahlen2.IndexOf(',');
             }
 
-            for(int i = zahlen.Length-3-komma; i > 0; i-=3)
+            for (int i = zahlen.Length - 3 - komma; i > 0; i -= 3)
             {
                 zahlen.Insert(i, (char)'.');
             }
@@ -144,46 +145,33 @@ Waehlen Sie eine Option aus:
         public static void Hauptmenü()
         {
             Console.Clear();
-            //            Console.WriteLine(@"Hauptmenue:
-
-            //Was moechtest du tun?
-
-            //Expandieren:                         Analysieren:                       Tagesgeschäft
-            //(1) Gruende ein neues Unternehmen   (4) Zeige Spieler-Informationen     (7) Taxi fahren lassen
-            //(2) Kauf ein neues Taxi             (5) Zeige alle Unternehmen
-            //(3) Besuche die Duebon-Bank         (6) Zeige bestimmtes Unternehme
-
-            //Feierabend & Backup
-            //(8) Spielstand Speichern
-            //(9) Ende des Spiels");
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(@"Hauptmenue:
 
-        Was moechtest du tun?
+            Was moechtest du tun?
 
-                            Expandieren:                                                
-                            (1) Gruende ein neues Unternehmen       
-                            (2) Kauf ein neues Taxi             
-                            (3) Besuche die Duebon-Bank");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(@"
-                            Analysieren:
-                            (4) Zeige Spieler-Informationen
-                            (5) Zeige alle Unternehmen
-                            (6) Zeige bestimmtes Unternehmen");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(@"
-                            Tagesgeschäft
-                            (7) Taxi fahren lassen");
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine(@"
+                                Expandieren:                                                
+                                (1) Gruende ein neues Unternehmen       
+                                (2) Kauf ein neues Taxi             
+                                (3) Besuche die Duebon-Bank
 
-                            Feierabend & Backup
-                            (8) Spielstand Speichern
-                            (9) Ende des Spiels");
-            Regex menüMöglichkeiten = new Regex("^[1-9]$"); // hier stand zuvor [12345678]
+                                Analysieren:
+                                (4) Zeige Spieler-Informationen
+                                (5) Zeige alle Unternehmen
+                                (6) Zeige bestimmtes Unternehmen
+
+                                Tagesgeschaeft
+                                (7) Taxi fahren lassen
+
+                                BWL
+                                (8) bla
+
+                                Feierabend & Backup
+                                (9) Spielstand Speichern
+                                (10) Ende des Spiels");
+            Regex menüMöglichkeiten = new Regex("^[1-9]$");
             string ersterSchritt = Console.ReadLine();
 
+            //todo 10 muss noch in den Regex eingebunden werden/ in der Schleife überprüfen
             if (menüMöglichkeiten.IsMatch(ersterSchritt.ToString()))
             {
                 switch (Convert.ToInt32(ersterSchritt))
@@ -191,7 +179,7 @@ Waehlen Sie eine Option aus:
                     case 1:
                         Benutzer.player.TaxiUnternehmen.Add(Unternehmen.unternehmenGruenden(Benutzer.player));
                         Console.ReadKey();
-                        LoadScreen();
+                        //LoadScreen();
                         break;
                     case 2:
                         int entscheidungTaxi = 0;
@@ -207,21 +195,22 @@ Waehlen Sie eine Option aus:
                                 case 1:
                                     Taxi.TaxiKauf(tmpUnternehmen, tmpHersteller, tmpTaxi);
                                     Console.ReadKey();
+                                    LoadScreen();
                                     break;
                                 case 2:
+                                    LoadScreen();
                                     break;
                             }
                         }
                         if (Convert.ToInt32(entscheidungTaxi) == 1 || Convert.ToInt32(entscheidungTaxi) == 2)
                         {
-                            LoadScreen();
+                            //LoadScreen();
                             break;
                         }
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("\nSie koennen noch kein Taxi kaufen!\nBitte erst ein Unternehmen gruenden.");
                         Console.ResetColor();
                         Console.ReadKey();
-                        LoadScreen();
                         break;
 
                     case 3:
@@ -230,12 +219,12 @@ Waehlen Sie eine Option aus:
                     case 4:
                         Console.WriteLine(Benutzer.player);
                         Console.ReadKey();
-                        LoadScreen();
+                        //LoadScreen();
                         break;
                     case 5:
                         Benutzer.player.zeigeUnternehmen(Benutzer.player);
                         Console.ReadKey();
-                        LoadScreen();
+                        //LoadScreen();
                         break;
                     case 6:
                         Benutzer.player.zeigeUnternehmen(Benutzer.player);
@@ -247,7 +236,7 @@ Waehlen Sie eine Option aus:
 
                             while (true)
                             {
-                                if(zahl.IsMatch(unternehmen) && Convert.ToInt32(unternehmen) <= Benutzer.player.TaxiUnternehmen.Count)
+                                if (zahl.IsMatch(unternehmen) && Convert.ToInt32(unternehmen) <= Benutzer.player.TaxiUnternehmen.Count)
                                 {
                                     Thread.Sleep(100);
                                     Console.Clear();
@@ -271,26 +260,213 @@ Waehlen Sie eine Option aus:
                             for (int i = 0; i < AnzahlMonate; ++i)
                             {
                                 Intervall.EinnahmenAusTaxiFahrten();
-                                //spritkosten
-                                //versicherungskosten?
+                                //hack spritkosten
+                                //hackversicherungskosten?
                                 Bank.EinzugVerbindlichkeiten();
-                                //Personalkosten
-                                //Gebäudekosten
-
+                                //hack Personalkosten
+                                //hack Gebäudekosten
+                                Console.WriteLine();
+                                string ausgabe = "Taxi faehrt...";
+                                for (int j = 0; j < 3; j++)
+                                {
+                                    foreach (var a in ausgabe)
+                                    {
+                                        Console.Write(a);
+                                        Thread.Sleep(50);
+                                    }
+                                    Console.WriteLine();
+                                }
                             }
-                            
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("\nSie koennen noch kein Umsatz generieren!\nBitte kaufen sie ein Taxi.");
+                            Console.ReadKey();
                             Console.ResetColor();
                         }
                         break;
                     case 8:
-                        SuL.speicherDaten();
+                        Console.Clear();
+                        Console.WriteLine("Waehlen Sie eine Option aus:\n");
+
+                        Regex möglichkeiten = new Regex("^[1-7]$");
+                        int n = 0;
+                        foreach (var a in BWL.alleBla)
+                        {
+                            n++;
+                            Console.WriteLine(n + ". " + a);
+                        }
+                        Console.Write("\n\nBitte waehlen Sie eine Funktion:\t");
+                        string funktion = Console.ReadLine();
+                        while (!möglichkeiten.IsMatch(funktion))
+                        {
+                            Console.Write("\nUngueltige Eingabe! Bitte erneut waehlen:\t");
+                            funktion = Console.ReadLine();
+                        }
+
+                        try
+                        {
+                            double wert = Convert.ToInt32(funktion);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("\n\nNicht moeglich!");
+                            Thread.Sleep(200);
+                            return;
+                        }
+
+                        switch (Convert.ToInt32(funktion))
+                        {
+                            //todo fehlerbehandlungen bei allen
+                            case 1:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Zinssatz:\t\t");
+                                double zinssatz = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Laufzeit:\t\t");
+                                int laufzeit = Convert.ToInt32(Console.ReadLine());
+
+                                double rbf = BWL.RBF(zinssatz, laufzeit);
+                                Console.WriteLine("\n\nRBF:\t\t" + Program.ZahlenAnzeigen(rbf));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+
+                            case 2:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Investition:\t\t");
+                                double investition = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Zinssatz:\t\t");
+                                zinssatz = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Konstante Einnahmen:\t");
+                                double c = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Laufzeit:\t\t");
+                                laufzeit = Convert.ToInt32(Console.ReadLine());
+
+                                double kw = BWL.Kapitalwert(investition, zinssatz, c, laufzeit);
+                                Console.WriteLine("\n\nKapitalwert:\t\t" + Program.ZahlenAnzeigen(kw));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+
+                            case 3:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Konstante Einnahmen:\t");
+                                c = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Zinssatz:\t\t");
+                                zinssatz = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Laufzeit:\t\t");
+                                laufzeit = Convert.ToInt32(Console.ReadLine());
+
+                                double sb = BWL.Sparbetrag(c, zinssatz, laufzeit);
+                                Console.WriteLine("\n\nKapitalwert:\t\t" + Program.ZahlenAnzeigen(sb));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+
+                            case 4:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Konstante Einnahmen:\t");
+                                c = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Zinssatz:\t\t");
+                                zinssatz = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Laufzeit:\t\t");
+                                laufzeit = Convert.ToInt32(Console.ReadLine());
+
+                                double js = BWL.JaehrlicheSparsumme(c, zinssatz, laufzeit);
+                                Console.WriteLine("\n\nKapitalwert:\t\t" + Program.ZahlenAnzeigen(js));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+
+                            case 5:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Konstante Einnahmen:\t");
+                                c = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Ausgabe:\t");
+                                double ausgabe = Convert.ToDouble(Console.ReadLine());
+
+                                double kwf1 = BWL.KWF1(c, ausgabe);
+                                Console.WriteLine("\n\nKWF1:\t\t" + Program.ZahlenAnzeigen(kwf1));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+
+                            case 6:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Zinssatz:\t\t");
+                                zinssatz = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Laufzeit:\t\t");
+                                laufzeit = Convert.ToInt32(Console.ReadLine());
+
+                                double kwf2 = BWL.KWF2(zinssatz, laufzeit);
+                                Console.WriteLine("\n\nKWF2:\t\t" + Program.ZahlenAnzeigen(kwf2));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+
+                            case 7:
+                                Console.Write("\nSie haben ");
+                                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                                Console.Write(BWL.alleBla[Convert.ToInt32(funktion) - 1]);
+                                Console.ResetColor();
+                                Console.WriteLine(" gewaehlt!");
+
+                                Console.WriteLine("\nBitte geben Sie ein.\n");
+                                Console.Write("Konstante Einnahmen:\t");
+                                c = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Ausgabe:\t");
+                                ausgabe = Convert.ToDouble(Console.ReadLine());
+                                Console.Write("Zinssatz:\t\t");
+                                zinssatz = Convert.ToDouble(Console.ReadLine());
+
+                                double ad = BWL.Amortisationsdauer(c, ausgabe, zinssatz);
+                                Console.WriteLine("\n\nAmortisationsdauer:\t\t" + Program.ZahlenAnzeigen(ad));
+                                Console.ReadKey();
+                                LoadScreen();
+                                break;
+                        }
                         break;
                     case 9:
+                        SuL.speicherDaten();
+                        break;
+                    case 10:
                         EndGame();
                         break;
                 }
@@ -303,16 +479,16 @@ Waehlen Sie eine Option aus:
                 Thread.Sleep(1000);
                 Hauptmenü();
             }
-            
+
         }
-        
-        
+
+
         public static void Main()
         {
             Hersteller.FuhrparkGenerieren();
             Intro();
-           
-            //SuL.ALLHASHINT(); Just for the Hashnumbers
+
+            //hack SuL.ALLHASHINT(); Just for the Hashnumbers
             while (true)
             {
                 Hauptmenü();

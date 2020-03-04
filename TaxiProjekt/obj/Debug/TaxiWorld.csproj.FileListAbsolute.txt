@@ -1,0 +1,5 @@
+/Users/marcelo/Projects/Rider/TaxiWorld/TaxiWorld/bin/Debug/TaxiWorld.exe
+/Users/marcelo/Projects/Rider/TaxiWorld/TaxiWorld/bin/Debug/TaxiWorld.pdb
+/Users/marcelo/Projects/Rider/TaxiWorld/TaxiWorld/obj/Debug/TaxiWorld.csprojAssemblyReference.cache
+/Users/marcelo/Projects/Rider/TaxiWorld/TaxiWorld/obj/Debug/TaxiWorld.exe
+/Users/marcelo/Projects/Rider/TaxiWorld/TaxiWorld/obj/Debug/TaxiWorld.pdb
