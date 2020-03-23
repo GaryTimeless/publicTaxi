@@ -1,10 +1,16 @@
 ﻿<Properties StartupConfiguration="{798ACC10-54F7-4E91-B97C-74D4E2347828}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="TaxiProjekt/Bank.cs">
+    <Files>
+      <File FileName="TaxiProjekt/EmptyCSharpFile.cs" Line="1" Column="1" />
+      <File FileName="TaxiProjekt/Bank.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="TaxiProjekt" expanded="True">
-            <Node name="TaxiProjekt" expanded="True" selected="True" />
+            <Node name="TaxiProjekt" expanded="True">
+              <Node name="Bank.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
